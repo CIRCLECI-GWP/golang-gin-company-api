@@ -8,11 +8,12 @@ jobs:
       tag: "1.23"
     steps:
       - checkout
-      - go/with-cache
-      - go/mod-download
-      - go/test:
-          covermode: atomic
-          failfast: true
+      - go/with-cache:
+          steps:
+            - go/mod-download
+            - go/test:
+                covermode: atomic
+                failfast: true
 workflows:
   main:
     jobs:
